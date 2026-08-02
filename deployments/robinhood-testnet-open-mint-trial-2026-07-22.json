@@ -1,0 +1,49 @@
+{
+  "network": "Robinhood Chain Testnet",
+  "chainId": 46630,
+  "rpc": "https://rpc.testnet.chain.robinhood.com",
+  "deployer": "0x07F7fA43551F5e60bEDCB9c381f95b18DC983CFB",
+  "purpose": "Open-mint reveal and Canvas sealing rehearsal; testnet only",
+  "contracts": {
+    "mockQuiverCoordinator": {
+      "address": "0x690221f5215ab656E61dEf240710212f533773F6",
+      "deploymentTx": "0xa3110b50461e36767d685777a93836f0adeb995ce594f137bc1f74e82eeb938f"
+    },
+    "loxleysArtOpenTestnet": {
+      "address": "0x819bD2c98145d3fC9DF7f78f53D38695414e095E",
+      "deploymentTx": "0x0e9cc67fb3a85b9ba1435d5c0b6f3635417373e090fe09878fe2fafb3704e2af"
+    },
+    "loxleysCanvas": {
+      "address": "0x504507cc3dE70cbAdE18F76604240fcbF7da39A1",
+      "deploymentTx": "0x39c8b26488fc2bd8a931e04c0a8c6896f05be86fafab54a716200d9a7aedcf1c"
+    },
+    "loxleysRenderer": {
+      "address": "0x707BB89FC79531e570383fc3e413db2dBf3AE04F",
+      "deploymentTx": "0xee568972df1b6f7c8ac9ccfb881a6d9976935f6b954c6029e671fea86f649554"
+    },
+    "agentExtensions": {
+      "address": "0x0d2126dAC8147Ea07440Ee0ef2364c5860c731C0",
+      "deploymentTx": "0xda268edc7f6693d1b1dba62c6391031f7042fd16ef678d74100fd2394dcae185"
+    }
+  },
+  "verification": {
+    "all20ArtBatchesUploaded": true,
+    "initialMintTx": "0xc6fd596c1d591b0689d69906008e765a39473568de05663b6a3596d1d9e072f2",
+    "initialMintedSupply": 5,
+    "testnetRevealTx": "0x3f40e3152a4eb0e59f46e80129e915763f6c2985eeb21c77335dc746f9f3e073",
+    "revealOffset": 777,
+    "token1SealTx": "0xd514dbeeb35da5e9f25e6ea4e416c6309e05223750f743468389c085ff85247c",
+    "token1AlteredPixels": 100,
+    "postRevealMintTx": "0x886a9dfbedd37c2e1ba2cffe1dd280b5f7257f64dd5f41332fb4e62717734fd5",
+    "finalMintedSupply": 6,
+    "mintClosed": false,
+    "startIndexSet": true,
+    "token1Sealed": true,
+    "token1OutlawActive": true
+  },
+  "safety": [
+    "LoxleysArtOpenTestnet deployment reverts on every chain except chainId 46630.",
+    "Production LoxleysArt still requires mint closure before verifiable reveal to prevent rare-position sniping.",
+    "The deployer EOA is an allowed SeaDrop caller for this rehearsal only."
+  ]
+}

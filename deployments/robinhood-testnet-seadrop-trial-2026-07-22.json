@@ -1,0 +1,60 @@
+{
+  "network": "Robinhood Chain Testnet",
+  "chainId": 46630,
+  "rpc": "https://rpc.testnet.chain.robinhood.com",
+  "deployer": "0x07F7fA43551F5e60bEDCB9c381f95b18DC983CFB",
+  "purpose": "SeaDrop-compatible full-set rehearsal; never use these addresses in production",
+  "contracts": {
+    "mockQuiverCoordinator": {
+      "address": "0x50dd08fdB4587b0a026251De9761b51E5D3745A1",
+      "deploymentTx": "0x920b8bc7f26a9fb0a86a6d3bbf1bbae21b77806c8a9f22da2c6271d8ab6a4a29"
+    },
+    "loxleysArt": {
+      "address": "0x94018b06C9C60911978FF2C3C9e606Da3d909132",
+      "deploymentTx": "0x16cc2de8d17684741b120830278a24aa05efe5a72da98bf584873a6fdb5bedbf"
+    },
+    "loxleysCanvas": {
+      "address": "0x8D77A2881FF07c86c01ac49ab314E449bF003d18",
+      "deploymentTx": "0x9514dc5cd800fe9bf6af64321907bb1bccbcf90d14bb5a9165ce1a1cb3d7aa34"
+    },
+    "loxleysRenderer": {
+      "address": "0xfb77900b0E7055a1d6138C6163b9284a67c47360",
+      "deploymentTx": "0x72821e7232f6ce3a80cf41d484a6a1e02d9cf677ca7c4e3cbf04598f01285fe8"
+    },
+    "agentExtensions": {
+      "address": "0xccFe6a90355729e176aDaC16d1aCAB2dd735878a",
+      "deploymentTx": "0x1cf3ac6c16900cc00ec7fe970a32215244ba37e66213f0748c75448f20f46c41"
+    },
+    "agentIdentityRegistry": {
+      "address": "0x57EB7210a9B5C2de4e2A6bA58B7c7a7A16a7A461",
+      "deploymentTx": "0xb1255af52af4be04c312c5daf42ef88661a0b20800667c5ecf2302ce734fda75"
+    }
+  },
+  "testMintAdapter": {
+    "kind": "deployer EOA authorized as SeaDrop caller for testnet only",
+    "address": "0x07F7fA43551F5e60bEDCB9c381f95b18DC983CFB"
+  },
+  "verification": {
+    "allContractsHaveCode": true,
+    "all20ArtBatchesUploaded": true,
+    "all2000BitmapAndTraitRecordsAvailable": true,
+    "namedRareSlotsConfigured": "1990..1999",
+    "traitOverridesLocked": true,
+    "mintTx": "0x6f49fa0cc2fd79c131eff5ca170f702627ddb2f86167fa0ad13c4ef87bdfca0f",
+    "mintedSupply": 3,
+    "mintClosed": true,
+    "revealRequestTx": "0xc25492d30909d7dca27fd49e3e1daaca0cd5ba341504b52b12026aeaf029db1b",
+    "revealFulfillTx": "0xdd4ed62248940b4f676b52f0356b299fb217a9a2da014928970a62bad61c4970",
+    "revealOffset": 1234,
+    "tokenSlots": { "1": 1234, "2": 1235, "3": 1236 },
+    "privilegedArtist1600Tx": "0xb7d0223409e331784be4de32b1564d0b8d85f921b9859838b75d2506eb44bbc5",
+    "normal257RejectedTx": "0xa83ca28e5872af846e83fc0447b2bac4cb22f695defcdfb8e528c59a059eb0d0",
+    "normal256AcceptedTx": "0x4a81bcfe3ad31191956285a231741dbdcaf4aab3e4d149ecce2efaeb6adf703f",
+    "identityRegistrationTx": "0x300367762c8b3d311c102ed2b5e3a0701f8310337802ba4a9434474f843fab57"
+  },
+  "notes": [
+    "The mock coordinator and EOA mint adapter replace unavailable testnet OpenSea/Quiver services.",
+    "Tokens 2 and 3 were transferred to disposable test wallets for permission tests; their keys were not retained.",
+    "Mainnet must use the verified Robinhood SeaDrop contract, production Quiver addresses, and owner 0x07F7fA43551F5e60bEDCB9c381f95b18DC983CFB."
+  ]
+}

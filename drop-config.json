@@ -1,0 +1,26 @@
+{
+  "chainId": 4663,
+  "seaDropAddress": "0x00005EA00Ac477B1030CE78506496e8C2dE24bf5",
+  "openSeaDropUrl": "",
+  "team": {
+    "wallet": "0x07F7fA43551F5e60bEDCB9c381f95b18DC983CFB",
+    "allocation": 150,
+    "priceWei": "0",
+    "startUtc": "2026-07-23T18:00:00Z",
+    "endUtc": "2026-07-23T19:00:00Z"
+  },
+  "community": {
+    "allocation": 808,
+    "allowlistFile": "opensea-drop/community-allowlist-opensea.csv",
+    "priceWei": "0",
+    "startUtc": "2026-07-23T19:00:00Z",
+    "endUtc": "2026-07-23T21:00:00Z"
+  },
+  "public": {
+    "priceWei": "0",
+    "walletLimit": 1,
+    "startUtc": "2026-07-23T21:00:00Z",
+    "endUtc": "2100-01-01T00:00:00Z"
+  },
+  "inventoryPolicy": "shared-global-supply-no-stage-reservations"
+}

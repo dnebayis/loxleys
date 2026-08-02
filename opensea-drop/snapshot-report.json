@@ -1,0 +1,59 @@
+{
+  "chain": "Robinhood Chain mainnet",
+  "snapshotBlock": 15926889,
+  "snapshotAt": "2026-07-21T22:35:42.587893+00:00",
+  "collections": [
+    {
+      "collection": "onchainhoodies-",
+      "snapshotBlock": 15926889,
+      "snapshotAt": "2026-07-21T22:35:42.587893+00:00",
+      "eligibleHolders": 100,
+      "allocation": 200
+    },
+    {
+      "collection": "stonkbrokers-434284142",
+      "snapshotBlock": 15926889,
+      "snapshotAt": "2026-07-21T22:35:42.587893+00:00",
+      "eligibleHolders": 100,
+      "allocation": 200
+    },
+    {
+      "collection": "normies",
+      "snapshotBlock": 15926889,
+      "snapshotAt": "2026-07-21T22:35:42.587893+00:00",
+      "eligibleHolders": 100,
+      "allocation": 200
+    },
+    {
+      "collection": "booa",
+      "snapshotBlock": 15926889,
+      "snapshotAt": "2026-07-21T22:35:42.587893+00:00",
+      "eligibleHolders": 100,
+      "allocation": 200
+    }
+  ],
+  "manualAllowlist": {
+    "0x0874ccdf28e1299db8ac8d71241a59c9b7c76b85": 2,
+    "0xbf45085ffd464e5b2ea41c2f66f0287384aabb18": 2,
+    "0x77d3b6281087e64a68e46018e246780adb7714e8": 2,
+    "0xd1dff2fa2a8022ebcfe69715e66b35d16b8f7e4f": 2
+  },
+  "uniqueWallets": 396,
+  "communityAllocation": 808,
+  "allocationValues": [
+    2,
+    4
+  ],
+  "excluded": "zero, dead and bytecode-bearing addresses",
+  "fileSha256": {
+    "community-allocation-audit.csv": "193ca7eff28722472d5098552e33d17e6e0034779eb8540a3c8f463ae799e004",
+    "community-eligible-wallets.csv": "dd9af08c4b967d71101eeb826d92e1610ce473b2ac7791c1cfd908f867e124b9",
+    "holders-booa.csv": "8c1025ed8733db8f983d9728bbccce119ad8995eb8b73c94a70f03fec44a228a",
+    "holders-normies.csv": "7f15c60dc0ef0dc5f8a9db989df909053203f164f6372f4a7a57aa38b14f0cfe",
+    "holders-onchainhoodies.csv": "a41529ad0f4385c2b4fd82442e6c87c0e36f602c517749292972343992643f4b",
+    "holders-stonkbrokers-434284142.csv": "3c4cb9d2815963b34fd5bf5761803f05de41e6acf437acf8dc77630cb365218b",
+    "metadata.csv": "0d7e966387494e984227c13e5dfa9b937e3612b471f2b921ab983c8faca20b97",
+    "snapshot-sources.csv": "e8adf6489b73050a2ec54a6e6a391ef5995ef7644bb2e54c0e725850f883d5b6",
+    "team-mint.csv": "ed59b89d0729a4279c1c47ac93993b7333db40facc296adc33081aba1f5fffd5"
+  }
+}
