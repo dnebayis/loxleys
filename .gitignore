@@ -1,0 +1,34 @@
+# Secrets and local environment
+**/.env
+**/.env.local
+**/.env.*.local
+!**/.env.example
+!**/.env.mainnet.example
+!**/.env.local.example
+
+# OS/editor files
+.DS_Store
+**/.DS_Store
+.claude/
+.playwright-cli/
+
+# JavaScript
+**/node_modules/
+**/dist/
+**/coverage/
+**/*.tsbuildinfo
+**/*.log
+**/.ponder/
+
+# Foundry runtime output
+contracts/out/
+contracts/cache/
+contracts/broadcast/
+
+# Local visual QA artifacts
+output/playwright/
+frontend/output/
+
+# Vendored dependency repository metadata
+contracts/lib/**/.git/
+contracts/lib/**/.gitmodules
