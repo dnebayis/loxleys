@@ -29,7 +29,7 @@ class FakeRepository implements AgentRepository {
   getState() { return Promise.resolve(state); }
 }
 
-const base: ApiConfig = { publicApiBaseUrl: 'https://api.example', rpcUrl: '', ponderGraphqlUrl: '', artAddress: address, canvasAddress: address, extensionsAddress: address };
+const base: ApiConfig = { publicApiBaseUrl: 'https://api.example', rpcUrl: '', ponderGraphqlUrl: '', artAddress: address, canvasAddress: address, extensionsAddress: address, robinhoodMcpEndpoint: 'https://agent.robinhood.com/mcp/trading' };
 
 describe('agent API', () => {
   it('reports adapter_not_configured explicitly', async () => {
