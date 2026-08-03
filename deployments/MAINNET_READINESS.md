@@ -1,57 +1,81 @@
-# Mainnet readiness — 22 July 2026
+# Mainnet release record — 3 August 2026
 
-## Passed
+This file is the production deployment record for the Robinhood Chain mainnet release. It
+replaces the earlier readiness checklist and must not contain simulated or predicted addresses.
 
-- Robinhood mainnet RPC reports chain ID `4663`.
-- SeaDrop `0x00005EA00Ac477B1030CE78506496e8C2dE24bf5` has 21,081 bytes of live bytecode.
-- The configured deployer key resolves to `0x07F7fA43551F5e60bEDCB9c381f95b18DC983CFB`.
-- Community allowlist has 396 unique wallets and a total allocation of 808.
-- Team allowlist contains the deployer with allocation 150.
-- Team, Community and Public stages are free; Public wallet limit is 1.
-- All 34 Solidity tests pass after the owner-reveal, exact-ten Named Rare and transfer-epoch
-  hardening changes. The live Robinhood mainnet fork wiring test also passes.
-- Production `LoxleysArt` runtime is 23,391 bytes, 1,185 bytes below EIP-170.
-- The production deploy script now rejects the wrong chain, wrong deployer key, unexpected or
-  empty SeaDrop before broadcasting.
-- Quiver is no longer a dependency. Reveal uses a one-time owner-selected offset after
-  irreversible mint closure; this is immutable but is not verifiable randomness.
-- A no-broadcast Robinhood mainnet deployment simulation passed. At the sampled gas price it
-  estimated `0.00247370935323347 ETH` for the four-contract deployment and wiring transactions.
-  With deployer nonce `2`, the simulation predicts Art `0x58b40A71A3355286f59013627947578C6EDb5701`,
-  Canvas `0xc8E69C8214c30B0ef544A9c491a7FaCbAa9a6C2E`, Renderer
-  `0xe4965ad0CED8Ce4D17d1537c7A0ddEF1aB46e78c` and Extensions
-  `0x8bd8A1893bD473Ca25Ae91f060F5D2615b8e5a38`. These are predictions, not deployed addresses
-  and must be recalculated if the nonce changes.
-- Canvas delegates and pending alliances are bound to a per-token ownership epoch, preventing
-  stale authorizations from reviving after an ownership round trip.
-- Exactly ten Named Rare slots are enforced on-chain. Reveal rejects an offset that would leave
-  any of those ten outside the final minted supply.
-- The local 2,000-item art/trait audit, OpenSea package validation, API tests/typecheck/build and
-  frontend production build pass.
-- Worst-case fragmented privileged Canvas metadata is covered by a regression test. Linear SVG
-  assembly reduced measured `tokenURI` gas from about 781 million to about 15.9 million and the
-  test enforces a 20 million upper bound.
-- `PUBLIC_API_BASE_URL` is intentionally deferred and does not block contract deployment.
+## Network and ownership
 
-## Blocking deployment
+- Network: Robinhood Chain mainnet
+- Chain ID: `4663`
+- Explorer: `https://robinhoodchain.blockscout.com`
+- SeaDrop: `0x00005EA00Ac477B1030CE78506496e8C2dE24bf5`
+- Owner/deployer: `0x07F7fA43551F5e60bEDCB9c381f95b18DC983CFB`
+- OpenSea collection: `https://opensea.io/collection/loxleysnft/overview`
 
-- The deployer mainnet balance is `0.016109440133242082 ETH`. This covers the sampled contract
-  deployment estimate but does not meet the conservative full-run target for 20 high-gas
-  SSTORE2 art uploads and safety margin. Fund to approximately `0.025–0.030 ETH` total before
-  broadcast so deployment and initialization can complete in one uninterrupted run.
+## Deployed contracts
 
-## Blocking OpenSea publication, not contract deployment
+- `LoxleysArt`: `0xc8E69C8214c30B0ef544A9c491a7FaCbAa9a6C2E`
+- `LoxleysCanvas`: `0xab7b708fA45D8929449f43f4E2724e0eb29a2C74`
+- `LoxleysRenderer`: `0x4430D15C381cEcC7fC1c600D9cFBE6FD8d934623`
 
-- `openSeaDropUrl` remains empty until the custom contract is attached in OpenSea Studio.
-- Production API, indexer and frontend contract addresses can only be filled after deployment.
-- Adapter8004 remains intentionally absent until an official registry is available.
+`AgentExtensions` was intentionally not deployed or wired on mainnet. Adapter8004 remains
+deferred until the official compatible registry/integration path is available.
 
-## Ownership rule
+Core deployment details are recorded in
+`deployments/robinhood-mainnet-core-2026-08-03.json`.
 
-- Art, Canvas and AgentExtensions must retain the same owner. The Canvas `privilegedArtist` is
-  immutable and is the deployment owner. Never transfer only one module. A future ownership
-  migration needs a replacement Canvas if the privileged artist must also change; production
-  preflight deliberately fails on split ownership.
+## Release state
 
-No mainnet transaction should be broadcast until the remaining deployment blocker and all
-post-change verification gates pass.
+- Total supply: `2,000`
+- Mint path: OpenSea SeaDrop only
+- Mint status: sold out
+- Art upload: `20 / 20` SSTORE2 bitmap/trait batches uploaded
+- Named Rare metadata: configured and locked
+- Trait overrides: locked by `lockTraitOverrides()`
+- Mint closure: complete
+- Reveal: complete
+- Reveal offset / `startIndex`: `1346`
+- `startIndexSet`: `true`
+- `mintClosed`: `true`
+
+Art upload, metadata lock and reveal details are recorded in
+`deployments/robinhood-mainnet-art-upload-2026-08-03.json`.
+
+## Reveal transactions
+
+- `closeMintingForReveal()`:
+  `0x4307b8fda1030da5753a31ee9942e97a5cfd173552b878870ba002b44a9628b2`
+- `reveal(1346)`:
+  `0xe1d577beec71bf08b6fd7a74d0707d0ec1bbdc22058a7b92f17f2b4e3afcf1ab`
+- Offset derivation used operationally:
+  `uint256(closeMintingForRevealTxHash) % 2000`
+
+The reveal offset is immutable after `reveal`. This design uses an owner-selected offset and is
+not verifiable randomness.
+
+## Named Rare token IDs after reveal
+
+- `645`: Robin Hood
+- `646`: Maid Marian
+- `647`: Little John
+- `648`: Friar Tuck
+- `649`: Will Scarlet
+- `650`: Alan-a-Dale
+- `651`: Much the Miller's Son
+- `652`: Sheriff of Nottingham
+- `653`: Sir Guy of Gisborne
+- `654`: King Richard
+
+## Current operational notes
+
+- Canonical metadata and SVG are on-chain through `tokenURI`.
+- OpenSea preview PNG/CSV files are operational references only and must not replace canonical
+  token metadata.
+- Canvas is available only after reveal and remains write-once per token.
+- Normal Canvas edits are limited to `1..256` changed pixels.
+- The immutable deployment artist may use up to `1..1600` changed pixels only while owning the
+  NFT or holding a current owner-granted delegation.
+- `PUBLIC_API_BASE_URL` is still deferred and should be set only when a production API/indexer
+  is hosted.
+- Future agent/trading features must not assume `AgentExtensions` exists on mainnet until it is
+  deployed, verified and explicitly wired.

@@ -1,0 +1,64 @@
+{
+  "network": "robinhood-mainnet",
+  "chainId": 4663,
+  "deployedAt": "2026-08-03",
+  "blockNumber": 26945764,
+  "deployer": "0x07F7fA43551F5e60bEDCB9c381f95b18DC983CFB",
+  "seaDrop": "0x00005EA00Ac477B1030CE78506496e8C2dE24bf5",
+  "publicApiBaseUrl": "",
+  "notes": [
+    "Core deployment only: AgentExtensions intentionally not deployed or wired.",
+    "Mint/sale phases were not opened by this deployment. Dates and stages will be configured in the OpenSea UI.",
+    "Art upload, named rare metadata, trait lock, mint close, reveal, and Canvas activation remain post-deployment steps."
+  ],
+  "contracts": {
+    "LoxleysArt": {
+      "address": "0xc8E69C8214c30B0ef544A9c491a7FaCbAa9a6C2E",
+      "txHash": "0xfbde7b0b9ecc1cb4b07e1b8c6bbf279d31faf0b96670f48ea802957723a3a8de",
+      "runtimeCodeBytes": 23391
+    },
+    "LoxleysCanvas": {
+      "address": "0xab7b708fA45D8929449f43f4E2724e0eb29a2C74",
+      "txHash": "0xc43b76a184fc849d2a00fa443c8873bcd74fb255643272137b3b104ff6230215",
+      "runtimeCodeBytes": 4607
+    },
+    "LoxleysRenderer": {
+      "address": "0x4430D15C381cEcC7fC1c600D9cFBE6FD8d934623",
+      "txHash": "0xb941b81f5eeed63fa78ba8d9811ece91ff6e46d879a021395975453ee90f9e87",
+      "runtimeCodeBytes": 13869
+    }
+  },
+  "wiring": {
+    "artOwner": "0x07F7fA43551F5e60bEDCB9c381f95b18DC983CFB",
+    "artCanvas": "0xab7b708fA45D8929449f43f4E2724e0eb29a2C74",
+    "artRenderer": "0x4430D15C381cEcC7fC1c600D9cFBE6FD8d934623",
+    "artExtensions": "0x0000000000000000000000000000000000000000",
+    "maxSupply": 2000,
+    "totalSupply": 0
+  },
+  "calls": {
+    "setCanvas": {
+      "txHash": "0xfcea5cbb464185709dc530394564607ece55579e11337545e6125eaba9629c3e",
+      "target": "0xc8E69C8214c30B0ef544A9c491a7FaCbAa9a6C2E"
+    },
+    "setRenderer": {
+      "txHash": "0x9792912322be8d7e5e01aac36bb0d784e0f3af25251d0fc3914234fc41a2e867",
+      "target": "0xc8E69C8214c30B0ef544A9c491a7FaCbAa9a6C2E"
+    }
+  },
+  "postDeployChecks": {
+    "tests": "forge test: 34 passed, 0 failed",
+    "dryRunEstimatedCostEth": "0.000517340027044428",
+    "postDeployDeployerNonce": 8,
+    "postDeployDeployerBalanceEth": "0.019313494990003119",
+    "seaDropPublicDrop": {
+      "mintPrice": "0",
+      "startTime": 0,
+      "endTime": 0,
+      "maxTotalMintableByWallet": 0,
+      "feeBps": 0,
+      "restrictFeeRecipients": false
+    },
+    "seaDropCreatorPayoutAddress": "0x0000000000000000000000000000000000000000"
+  }
+}

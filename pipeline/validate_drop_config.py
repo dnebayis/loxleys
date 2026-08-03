@@ -11,6 +11,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 VERIFIED_SEADROP = "0x00005ea00ac477b1030ce78506496e8c2de24bf5"
+OPENSEA_ALLOWLIST_HEADER = [
+    "Wallet address",
+    "Custom mint limit (optional)",
+    "Custom price in native token e.g. ETH (optional)",
+]
 
 
 def fail(message: str) -> None:
@@ -53,8 +58,16 @@ def main() -> None:
         fail("community SeaDrop allowlist is missing")
     with allowlist.open(newline="", encoding="utf-8") as handle:
         rows = list(csv.reader(handle))
-    if len(rows) != 396 or any(len(row) != 2 for row in rows) or sum(int(row[1]) for row in rows) != 808:
-        fail("community allowlist must be headerless: 396 wallet,limit rows totalling 808")
+    if not rows or rows[0] != OPENSEA_ALLOWLIST_HEADER:
+        fail("community allowlist must use OpenSea's current headered template")
+    allowlist_rows = rows[1:]
+    if (
+        len(allowlist_rows) != 396
+        or any(len(row) != 3 for row in allowlist_rows)
+        or sum(int(row[1]) for row in allowlist_rows) != 808
+        or any(row[2] not in {"0", "0.0", "0.00"} for row in allowlist_rows)
+    ):
+        fail("community allowlist must contain 396 wallet,limit,0 rows totalling 808")
     windows = {}
     for name, stage in (("team", team), ("community", community), ("public", public)):
         if str(stage.get("priceWei")) != "0":

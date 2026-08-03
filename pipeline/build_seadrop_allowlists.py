@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build OpenSea SeaDrop's headerless wallet,custom_limit allowlists."""
+"""Build OpenSea SeaDrop allowlists using the current OpenSea CSV template."""
 
 from __future__ import annotations
 
@@ -9,6 +9,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DROP = ROOT / "opensea-drop"
 TEAM_WALLET = "0x07f7fa43551f5e60bedcb9c381f95b18dc983cfb"
+OPENSEA_ALLOWLIST_HEADER = [
+    "Wallet address",
+    "Custom mint limit (optional)",
+    "Custom price in native token e.g. ETH (optional)",
+]
 
 
 def main() -> None:
@@ -26,9 +31,13 @@ def main() -> None:
         raise SystemExit("community allocation must total 808")
 
     with (DROP / "community-allowlist-opensea.csv").open("w", newline="", encoding="utf-8") as handle:
-        csv.writer(handle, lineterminator="\n").writerows(parsed)
+        writer = csv.writer(handle, lineterminator="\n")
+        writer.writerow(OPENSEA_ALLOWLIST_HEADER)
+        writer.writerows((address, limit, 0) for address, limit in parsed)
     with (DROP / "team-allowlist-opensea.csv").open("w", newline="", encoding="utf-8") as handle:
-        csv.writer(handle, lineterminator="\n").writerow((TEAM_WALLET, 150))
+        writer = csv.writer(handle, lineterminator="\n")
+        writer.writerow(OPENSEA_ALLOWLIST_HEADER)
+        writer.writerow((TEAM_WALLET, 150, 0))
 
     print("PASS community: 396 unique wallets, allocation 808")
     print("PASS team: 1 wallet, allocation 150")

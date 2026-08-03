@@ -1,21 +1,22 @@
 # Loxleys project specification
 
-Status: SeaDrop-compatible Robinhood Chain mainnet implementation; publication is gated on
-launch configuration and live-address verification.
+Status: SeaDrop-compatible Robinhood Chain mainnet release. The collection is minted out and
+revealed. Core contracts are live; the optional AgentExtensions/Adapter8004 layer is deliberately
+not deployed yet.
 
 Loxleys is a 2,000-supply on-chain Agent NFT collection. Each NFT combines an immutable Public
-Identity, an optional owner-sealed Outlaw Identity, persistent memories, derived capabilities,
-alliances and an Adapter8004 binding.
+Identity and an optional owner-sealed Outlaw Identity. The codebase also defines persistent
+memories, derived capabilities, alliances and Adapter8004 binding for a later extension release.
 
 ## NFT lifecycle
 
-1. OpenSea SeaDrop mints the custom `LoxleysArt` NFT. Direct public/owner mint functions do not
-   exist. All tokens show the same placeholder before reveal.
-2. Once every intended stage is finished, the owner permanently closes minting.
-3. After minting closes, the owner selects a one-time offset over all 2,000 art slots. Ten Named
-   Rare slots have no reservation; their bitmap, traits, name and persona move together. The
-   offset becomes immutable, but the distribution is owner-selected rather than random.
-4. ERC-4906 refreshes marketplace metadata. The canonical JSON/SVG remains on-chain.
+1. OpenSea SeaDrop minted the custom `LoxleysArt` NFT. Direct public/owner mint functions do not
+   exist.
+2. After the sale completed, the owner permanently closed minting.
+3. The deployed collection was revealed with immutable offset `1346`. Ten Named Rare slots had
+   no reservation; their bitmap, traits, name and persona moved together. The distribution is
+   owner-selected rather than verifiably random.
+4. ERC-4906 refreshed marketplace metadata. The canonical JSON/SVG remains on-chain.
 5. After reveal, an owner or delegate may seal exactly one `1..256` pixel XOR overlay. The
    immutable deployment artist may use `1..1600` pixels, but only on NFTs they own or for which
    the current owner explicitly made them delegate. The bitmap cannot be replaced; the owner
@@ -23,11 +24,13 @@ alliances and an Adapter8004 binding.
 
 ## Agent and alliances
 
-Token ownership is the root authorization. A holder can append bounded memories, inspect
-trait-derived capabilities, request an alliance, accept an incoming request, or break an active
-alliance. Mutual pending requests form the alliance automatically. A transfer invalidates stale
-requests because the recorded requester owner no longer matches current ownership. The API and
-UI expose active allies, incoming requests and outgoing requests separately.
+Token ownership is the root authorization. The planned extension layer lets a holder append
+bounded memories, inspect trait-derived capabilities, request an alliance, accept an incoming
+request, or break an active alliance. Mutual pending requests form the alliance automatically. A
+transfer invalidates stale requests because the recorded requester owner no longer matches
+current ownership. The API and UI are designed to expose active allies, incoming requests and
+outgoing requests separately. On mainnet this layer remains disabled until `AgentExtensions` and
+the official Adapter8004 path are deployed.
 
 ## Allocation
 
@@ -36,11 +39,18 @@ UI expose active allies, incoming requests and outgoing requests separately.
 - Public: free, limit `1` per wallet, all remaining supply; unused Team/Community capacity is
   not reserved forever.
 
-Prices, exact UTC windows and public wallet limit are locked in `drop-config.json` and enforced
-by the publication preflight.
+The three stages used one shared 2,000-token global supply; Team and Community limits were
+eligibility ceilings, not reserved token buckets. Any unminted capacity became available when
+Public began.
 
-The three stages use one shared 2,000-token global supply; Team and Community limits are
-eligibility ceilings, not reserved token buckets. Any unminted capacity is therefore available
-when Public begins. Locked schedule (Europe/Istanbul): Team 23 July 21:00–22:00, Community
-23 July 22:00–24 July 00:00, Public from 24 July 00:00. Public uses 1 January 2100 as the
-SeaDrop-compatible operational representation of “open-ended”.
+## Production addresses
+
+- `LoxleysArt`: `0xc8E69C8214c30B0ef544A9c491a7FaCbAa9a6C2E`
+- `LoxleysCanvas`: `0xab7b708fA45D8929449f43f4E2724e0eb29a2C74`
+- `LoxleysRenderer`: `0x4430D15C381cEcC7fC1c600D9cFBE6FD8d934623`
+- SeaDrop: `0x00005EA00Ac477B1030CE78506496e8C2dE24bf5`
+- Owner/deployer: `0x07F7fA43551F5e60bEDCB9c381f95b18DC983CFB`
+- OpenSea: `https://opensea.io/collection/loxleysnft/overview`
+
+Mainnet reveal details are recorded in
+`deployments/robinhood-mainnet-art-upload-2026-08-03.json`.

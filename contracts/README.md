@@ -1,7 +1,7 @@
 # Loxleys contracts
 
-Mainnet target: Robinhood Chain (`4663`). Historical testnet deployments are not production
-addresses and are not migrated.
+Production network: Robinhood Chain mainnet (`4663`). Historical testnet deployments are not
+production addresses and are not migrated.
 
 ## Active architecture
 
@@ -12,27 +12,32 @@ addresses and are not migrated.
   attached to the shuffled art slot, not the pre-reveal token ID.
 - `LoxleysCanvas.sol`: one permanent 40×40 XOR overlay containing `1..256` changed pixels for
   normal editors. The immutable deployment artist may use all `1..1600` pixels only as owner or
-  current delegate. Sealing and identity switching remain disabled until reveal.
+  current delegate. Sealing and identity switching are available only after reveal.
 - `AgentExtensions.sol`: memories, derived capabilities and request/accept/break alliances.
+  Implemented but not deployed/wired in the current mainnet core release.
 - `Adapter8004.sol`: deferred external identity adapter; it is not part of the initial deployment
   and will only be used after an official compatible registry is published.
 
 All 2,000 bitmap slots, including the ten Named Rares, participate in one owner-selected offset.
 There is no reserved mint path. The owner can choose the distribution, but the offset becomes
-immutable after reveal. Every mint enters through the single verified Robinhood SeaDrop address
-passed to the constructor.
+immutable after reveal. Every mint entered through the single verified Robinhood SeaDrop address
+passed to the constructor. Mainnet is sold out and revealed with offset `1346`.
 
-## Deployment order
+## Mainnet deployment
 
-1. Complete and validate `/drop-config.json`; production validation fails while stage dates or
-   the Drop URL are absent. Robinhood SeaDrop is locked to
-   `0x00005EA00Ac477B1030CE78506496e8C2dE24bf5` and must be reverified before broadcast.
-2. Fund the deployer, then deploy Art, Canvas, Renderer and AgentExtensions using
-   `script/Deploy.s.sol`. No identity registry is deployed.
-3. Verify the one-time Art wiring and upload all 20 bitmap/trait batches.
-4. Attach the custom Art address to OpenSea and configure Team 150, Community 808 and Public.
-5. Mint through SeaDrop. When sales are complete, call `closeMintingForReveal()` once.
-6. Call `reveal(offset)` once. After the ERC-4906 refresh, Canvas becomes available.
+- `LoxleysArt`: `0xc8E69C8214c30B0ef544A9c491a7FaCbAa9a6C2E`
+- `LoxleysCanvas`: `0xab7b708fA45D8929449f43f4E2724e0eb29a2C74`
+- `LoxleysRenderer`: `0x4430D15C381cEcC7fC1c600D9cFBE6FD8d934623`
+- SeaDrop: `0x00005EA00Ac477B1030CE78506496e8C2dE24bf5`
+- Owner/deployer: `0x07F7fA43551F5e60bEDCB9c381f95b18DC983CFB`
+
+Deployment records:
+
+- `../deployments/robinhood-mainnet-core-2026-08-03.json`
+- `../deployments/robinhood-mainnet-art-upload-2026-08-03.json`
+- `../deployments/MAINNET_READINESS.md`
+
+## Validation
 
 ```sh
 forge test
@@ -44,5 +49,6 @@ runtime limit.
 
 Production scripts for art upload, Named Rare configuration and metadata locking require chain
 ID `4663`, a matching deployer key/address, deployed Art bytecode and the deployer as Art owner.
-Art, Canvas and AgentExtensions ownership must not be split. Canvas's full-portrait
+Art and Canvas ownership must not be split. If `AgentExtensions` is deployed later, ownership and
+wiring must be checked separately before enabling agent UI/API flows. Canvas's full-portrait
 `privilegedArtist` is immutable, so changing that role requires deploying a replacement Canvas.

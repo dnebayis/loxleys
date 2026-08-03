@@ -43,7 +43,7 @@
   },
   "safety": [
     "LoxleysArtOpenTestnet deployment reverts on every chain except chainId 46630.",
-    "Production LoxleysArt still requires mint closure before verifiable reveal to prevent rare-position sniping.",
+    "Production LoxleysArt still requires irreversible mint closure before the one-time reveal offset is set.",
     "The deployer EOA is an allowed SeaDrop caller for this rehearsal only."
   ]
 }

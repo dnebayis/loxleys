@@ -7,8 +7,11 @@ flows.
 ## Routes
 
 - `/` - project narrative, Public/Outlaw identity model, and on-chain architecture.
-- `/agent` - owner/controller state, Adapter8004 binding, NFT-derived persona, memories, trait-derived capabilities, and alliances.
-- `/trading` - Robinhood agentic trading integration, MCP config for AI agents, trade memory log, and Robinhood account link.
+- `/agent` - staged owner/controller, Adapter8004, memory, capability and alliance surface.
+  Production content remains disabled until `AgentExtensions` and the official Adapter8004 path
+  are deployed.
+- `/trading` - staged Robinhood agentic trading/MCP surface. Production content remains disabled
+  until the public API/runtime and agent layer are configured.
 - `/canvas` - 40x40 Public/Outlaw editor, local drafts, import/export, delegation, permanent
   sealing, and owner-controlled active identity selection.
 - `/docs` - protocol, reveal, Canvas, Agent and alliance guidance.
@@ -46,11 +49,16 @@ Required production configuration:
 
 - `VITE_WALLETCONNECT_PROJECT_ID`
 - `VITE_ROBINHOOD_RPC_URL`
-- `VITE_PUBLIC_API_BASE_URL`
 - `VITE_LOXLEYS_ART_ADDRESS`
 - `VITE_LOXLEYS_CANVAS_ADDRESS`
-- `VITE_AGENT_EXTENSIONS_ADDRESS`
-- `VITE_ADAPTER8004_ADDRESS` when the external adapter is available
+- `VITE_PUBLIC_API_BASE_URL` when the hosted API is live
+- `VITE_AGENT_EXTENSIONS_ADDRESS` only after the extension contract is deployed/wired
+- `VITE_ADAPTER8004_ADDRESS` only when the external adapter is available
+
+Current mainnet core addresses:
+
+- `VITE_LOXLEYS_ART_ADDRESS=0xc8E69C8214c30B0ef544A9c491a7FaCbAa9a6C2E`
+- `VITE_LOXLEYS_CANVAS_ADDRESS=0xab7b708fA45D8929449f43f4E2724e0eb29a2C74`
 
 Without an adapter address, the app remains usable but displays `Adapter pending` and disables
 registration. A development WalletConnect fallback allows local builds, but production must use

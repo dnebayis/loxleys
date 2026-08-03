@@ -1,7 +1,7 @@
 # Loxleys Ponder Indexer
 
-Ponder projection for Loxleys ownership, one-time Outlaw seals, delegation, agent extensions,
-and Adapter8004 bindings.
+Ponder projection for Loxleys ownership, reveal state, one-time Outlaw seals, delegation,
+agent extensions, and Adapter8004 bindings.
 
 ## Indexed Events
 
@@ -9,9 +9,10 @@ and Adapter8004 bindings.
 - `LoxleysCanvas.OutlawSealed`
 - `LoxleysCanvas.ActiveIdentitySet`
 - `LoxleysCanvas.DelegateSet`
-- AgentExtensions memory and alliance lifecycle events. Capabilities are derived from NFT
-  traits at runtime and are not assigned or indexed as extension state.
-- `Adapter8004.AgentBound` when an adapter address is configured
+- AgentExtensions memory and alliance lifecycle events when the extension contract is deployed
+  and configured. Capabilities are derived from NFT traits at runtime and are not assigned or
+  indexed as extension state.
+- `Adapter8004.AgentBound` when an adapter address is configured.
 
 A transfer updates ownership and clears the indexed delegate view. It does not delete a sealed
 Outlaw identity or its active-identity state. `ActiveIdentitySet` projects whether Public or
@@ -33,6 +34,10 @@ entrypoint exposes GraphQL at `/graphql`; Ponder provides its own `/health` and 
 
 `ADAPTER8004_ADDRESS` may remain empty until the external deployment exists. The Loxleys
 contracts continue indexing without adapter events.
+
+Current mainnet core deployment does not wire `AgentExtensions` or Adapter8004. Indexing should
+start with Art/Canvas only and enable extension/binding event sources as a separate production
+change.
 
 ## Commands
 

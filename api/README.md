@@ -2,7 +2,8 @@
 
 Hono service for Loxleys contract projections, ERC-8004-compatible metadata, A2A Agent Cards,
 Canvas images, and machine-readable discovery. Live token state is read from Robinhood Chain
-mainnet; list and binding queries use the Ponder indexer.
+mainnet; list and binding queries use the Ponder indexer. Production hosting is deferred until
+`PUBLIC_API_BASE_URL` is set and the indexer/runtime is deployed.
 
 ## Setup
 
@@ -77,6 +78,18 @@ Loxleys never stores Robinhood auth tokens — they are passed per-request via t
 `Authorization: Bearer` header. Query-string tokens are intentionally rejected so credentials
 do not leak through URLs, access logs, or browser history.
 
+## Mainnet state
+
+- `LoxleysArt`: `0xc8E69C8214c30B0ef544A9c491a7FaCbAa9a6C2E`
+- `LoxleysCanvas`: `0xab7b708fA45D8929449f43f4E2724e0eb29a2C74`
+- `LoxleysRenderer`: `0x4430D15C381cEcC7fC1c600D9cFBE6FD8d934623`
+- `AgentExtensions`: not deployed/wired
+- `Adapter8004`: not configured
+
+Routes that only need Art/Canvas can be enabled once the hosted API/indexer is configured.
+Memory, alliance, binding and trading flows must stay disabled until the extension and adapter
+addresses are deployed, verified and added to the runtime.
+
 ## Adapter State
 
 `ADAPTER8004_ADDRESS` may stay empty in development until the mainnet adapter is deployed.
@@ -98,8 +111,9 @@ npm run preflight:production
 ```
 
 The preflight reads the configured Robinhood mainnet contracts, checks chain `4663`, the 2,000
-supply cap, Art/Canvas/Renderer/Extensions wiring, both edge art batches and current mint/reveal
-state. Production also requires the Adapter8004 and a public HTTPS API URL.
+supply cap, Art/Canvas/Renderer wiring, both edge art batches and current mint/reveal state.
+Production also requires the Adapter8004 and a public HTTPS API URL only when agent/binding
+flows are being enabled.
 
 ## Commands
 

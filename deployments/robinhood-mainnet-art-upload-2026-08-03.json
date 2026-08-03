@@ -1,0 +1,80 @@
+{
+  "network": "robinhood-mainnet",
+  "chainId": 4663,
+  "date": "2026-08-03",
+  "artContract": "0xc8E69C8214c30B0ef544A9c491a7FaCbAa9a6C2E",
+  "deployer": "0x07F7fA43551F5e60bEDCB9c381f95b18DC983CFB",
+  "artUpload": {
+    "sourceDir": "contracts/art",
+    "batchesUploaded": 20,
+    "batchesExpected": 20,
+    "batchSize": 100,
+    "totalSlots": 2000,
+    "postUploadCheck": "isBatchUploaded(0..19) returned true",
+    "transactions": [
+      { "batch": 0, "txHash": "0x3163a6780b70b2de022a5575173e08537a13c76f2ea3fefc5cbef19098acf512" },
+      { "batch": 1, "txHash": "0xaea7ce8cc5e2901ba835d41ef216ac2ec15a069ef38e7c8343ca2a0f49e26ab0" },
+      { "batch": 2, "txHash": "0x2f2c6cde0d9f62fa03d701a9fa09c598d1af90824f984bdd33375778a03c7113" },
+      { "batch": 3, "txHash": "0x4ed43c889030667fd75ddbce0c5f7605148a90657c8b8a20bd01c1f687a03824" },
+      { "batch": 4, "txHash": "0x114575d9516afec81e7dc9f86551a15f0ffb2bee1bbafc22ff8b3aa20b0f0d5d" },
+      { "batch": 5, "txHash": "0x262f2c304abc213e417ba99092bfcf0f8c80abc7cd0f29db1c17aa91320515b7" },
+      { "batch": 6, "txHash": "0x88e91a3f2c53b8df3750abce6449bbca2679f2d5d9283bf9c9a8d4e537c2eb32" },
+      { "batch": 7, "txHash": "0xa578ec792d358dd45cb6c588ff160b82c6cc138ba730b6f03107e68bc5a53987" },
+      { "batch": 8, "txHash": "0x0bf303451cffa4a99a0214775c27a89466b3cbf07390478eecb684497b9ae491" },
+      { "batch": 9, "txHash": "0x88ce0ea799d3a39948ca68204d1d4df442fce959d4733d692ae9a63245b49166" },
+      { "batch": 10, "txHash": "0x106fe8aa15209fa444a457fc6a2a91ba524cfb28b70fbcb13be56b93b42e0a93" },
+      { "batch": 11, "txHash": "0x8a4a18c7debbecf6c158e90fd9a0bc9ad62923a171bec582ee7ca5c68f9b6d59" },
+      { "batch": 12, "txHash": "0x3aac37f6aa7addbcb38c719e9f6f8bfbf4460ecbff5d6c77173ce95a2133aaf1" },
+      { "batch": 13, "txHash": "0x4cceea3ccad50a28e01f01673ec1634b6fb9cdfa671482e931393775fd854c8e" },
+      { "batch": 14, "txHash": "0xd8ae6084b2075badb794cae804bc27d9fb4e1eef24b24a809975e644068493c0" },
+      { "batch": 15, "txHash": "0x948e263347c9683c4d277336fd03b8fdd5a900299d39152de9c1bcfeb565cff4" },
+      { "batch": 16, "txHash": "0xaec0aabc0b1eb89b4c20fd04116dade5e4baeed99d84e5f47743d643412d83d5" },
+      { "batch": 17, "txHash": "0x67c409db977fb2dfccd71f6ca3deb9e96c80e252b433916378abd00efbbc95a0" },
+      { "batch": 18, "txHash": "0xcb5e4ebee4d2c42d30bfffd25ce4a16c30d46ba752d291c751f03eab7667fba9" },
+      { "batch": 19, "txHash": "0xaee889bab525cd712d6bd7e4eeaf22da87ad80f4f86ef86de8bf98e0fba5fd99" }
+    ]
+  },
+  "namedRareMetadata": {
+    "configured": true,
+    "traitOverridesLocked": true,
+    "lockTxHash": "0xa19a930c3b78deed07d94df8855aa6049a6018b23c9f9311c89a9bee96e5d3e9",
+    "note": "Metadata is configured and locked. lockTraitOverrides() is irreversible.",
+    "transactions": [
+      { "slot": 1990, "name": "Robin Hood", "txHash": "0x8846db885078c0a559a9a04c73dc81ba37d27a1136c2e870e70b4780bb1cd60c" },
+      { "slot": 1991, "name": "Maid Marian", "txHash": "0xe82d8c47395b33566c4a7ef49abb0bbbbdfffc07110486ccce92f0dd0a20770c" },
+      { "slot": 1992, "name": "Little John", "txHash": "0xc1f27e5a24750447c40df5f1852cc6d97be29bee521842909c93186e0cbaa3d8" },
+      { "slot": 1993, "name": "Friar Tuck", "txHash": "0x69279797d2e4acf264eee96e8c0e80e76abdf2acd6e47718f10ed459b24c7ae3" },
+      { "slot": 1994, "name": "Will Scarlet", "txHash": "0x47bd75e16461c9a68aa60bf2db76e195bbdbaac5a5a139725ab60729c51c5a44" },
+      { "slot": 1995, "name": "Alan-a-Dale", "txHash": "0x647c7a4f9d9acbe7947f313161d70f96c889fee236977330c9c837f207387cb6" },
+      { "slot": 1996, "name": "Much the Miller's Son", "txHash": "0x156d1dbbb496c9539187244df287fbc8ae81b67ae6d239ae965bc23c627d641d" },
+      { "slot": 1997, "name": "Sheriff of Nottingham", "txHash": "0x7596158f04b946f9dc526144131c6cfd90250b9b68c5541fe2b6c97a55cbe7ce" },
+      { "slot": 1998, "name": "Sir Guy of Gisborne", "txHash": "0xc7444cfa94cac378cada9cd637868b8eee55f3b5ec336865efb076552f141f77" },
+      { "slot": 1999, "name": "King Richard", "txHash": "0x844674fd5ed3bf1952542ec55b70f160e7b50e99906886c6f599603f65f2912c" }
+    ]
+  },
+  "postChecks": {
+    "totalSupply": 2000,
+    "mintClosed": true,
+    "closeMintingForRevealTxHash": "0x4307b8fda1030da5753a31ee9942e97a5cfd173552b878870ba002b44a9628b2",
+    "startIndexSet": true,
+    "startIndex": 1346,
+    "revealTxHash": "0xe1d577beec71bf08b6fd7a74d0707d0ec1bbdc22058a7b92f17f2b4e3afcf1ab",
+    "offsetDerivation": "uint256(closeMintingForRevealTxHash) % 2000",
+    "traitOverridesLocked": true,
+    "namedRareTokenIds": {
+      "645": "Robin Hood",
+      "646": "Maid Marian",
+      "647": "Little John",
+      "648": "Friar Tuck",
+      "649": "Will Scarlet",
+      "650": "Alan-a-Dale",
+      "651": "Much the Miller's Son",
+      "652": "Sheriff of Nottingham",
+      "653": "Sir Guy of Gisborne",
+      "654": "King Richard"
+    },
+    "deployerNonce": 48,
+    "deployerBalanceEth": "0.017288205075171119",
+    "checkedAtUtc": "2026-08-03T22:01:59Z"
+  }
+}

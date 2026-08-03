@@ -5,7 +5,6 @@ import {Script, console} from "forge-std/Script.sol";
 import {LoxleysArt} from "../src/LoxleysArt.sol";
 import {LoxleysCanvas} from "../src/LoxleysCanvas.sol";
 import {LoxleysRenderer} from "../src/LoxleysRenderer.sol";
-import {AgentExtensions} from "../src/AgentExtensions.sol";
 
 contract Deploy is Script {
     uint256 internal constant ROBINHOOD_MAINNET_CHAIN_ID = 4663;
@@ -40,15 +39,9 @@ contract Deploy is Script {
         art.setRenderer(address(renderer));
         console.log("LoxleysRenderer:", address(renderer));
 
-        AgentExtensions extensions = new AgentExtensions(address(art), deployer);
-        console.log("AgentExtensions:", address(extensions));
-
-        art.setExtensions(address(extensions));
-        console.log("Extensions wired to Art");
-
-        // Identity registration is intentionally external to the core deployment. Once the
-        // official registry is finalized, a separately deployed adapter can resolve ownership
-        // through LoxleysArt without changing Art, Canvas, Renderer, or AgentExtensions.
+        // Identity and agent extensions are intentionally external to the core deployment.
+        // Once the official registry path is finalized, a separately deployed extension can
+        // resolve ownership through LoxleysArt without changing Art, Canvas, or Renderer.
 
         string memory publicApiBaseUrl = vm.envOr("PUBLIC_API_BASE_URL", string(""));
         if (bytes(publicApiBaseUrl).length != 0) {
